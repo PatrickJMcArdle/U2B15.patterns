@@ -22,7 +22,16 @@ export function sumToN(n) {
  * @returns `1` if n is 0
  */
 export function factorial(n) {
-  // TODO
+  if(typeof n !== 'number') {
+    return NaN
+  } else if(n < 0) {
+    return undefined
+  } else if(n === 0) {
+    return 1
+  } else {
+    return (n * factorial(n - 1));
+  }
+  
 }
 
 /**
@@ -32,7 +41,18 @@ export function factorial(n) {
  * @returns `[]` if n is 0 or negative
  */
 export function buildNArray(n) {
-  // TODO
+  let array = [];
+  if(typeof n !== 'number') {
+    return null
+  } else if(n <= 0) {
+    array = [];
+    return array;
+  } else {
+    for (let i = 1; i <= n; i++) {
+      array.push(i);
+    }
+    return array;
+  }
 }
 
 /**
@@ -40,7 +60,17 @@ export function buildNArray(n) {
  * @returns {string} the longest string in `strings`
  */
 export function getLongestString(strings) {
-  // TODO
+  if(strings.length === 0) {
+    return ''
+  } else {
+    let longestString = "";
+    for (const string of strings) {
+      if (string.length > longestString.length) {
+        longestString = string;
+      }
+    }
+    return longestString;
+  }
 }
 
 /**
@@ -48,7 +78,17 @@ export function getLongestString(strings) {
  * @returns {number} the number of students present
  */
 export function countPresent(attendance) {
-  // TODO
+  if(attendance.length === 0) {
+    return 0;
+  } else {
+    let present = 0;
+    for(const student of attendance) {
+      if(student === true) {
+        present = present + 1;
+      }
+    }
+    return present;
+  }
 }
 
 /**
@@ -62,5 +102,24 @@ export function countPresent(attendance) {
  * @returns `null` if `dna` is not a string
  */
 export function complementDNA(dna) {
-  // TODO
+  if(typeof dna !== 'string') {
+    return null;
+  } else if(dna === "") {
+    return "";
+  } else {
+    const array1 = dna.split("");
+    const array2 = [];
+    for(const letter of array1) {
+      if(letter === "A") {
+        array2.push("T")
+      } else if(letter === "T") {
+        array2.push("A")
+      } else if(letter === "C") {
+        array2.push("G")
+      } else if(letter === "G") {
+        array2.push("C")
+      }
+    }
+    return array2.join("");
+  }
 }
